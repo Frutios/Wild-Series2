@@ -1,0 +1,31 @@
+@font-face{
+    font-family: 'atomic';
+    src: url(('fonts/atomicage-regular.ttf')) format('truetype');
+    font-weight: 200;
+}
+
+body {
+    background-color: #161e21!important;
+}
+
+h1 {
+    color: wheat;
+    font-family: 'atomic';
+    font-weight: 200;
+}
+
+nav {
+    background-color: wheat;
+    color: #161e21!important;
+    text-decoration: none!important;
+}
+
+a {
+    color: #161e21!important;
+}
+
+.navbar-brand {
+    font-family: 'atomic'!important;
+    font-weight: 200!important;
+
+}
