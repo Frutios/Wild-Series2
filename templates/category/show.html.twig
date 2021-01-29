@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{category.name}}{% endblock %}
+
+{% block body %}
+
+<div class="media">
+    <h1 class="mt-0">{{ category.name }}</h1>
+</div>
+
+    {% for program in programs %}
+        <div class="card">
+            <a href="{{ path("program_show", { id: program.id }) }}">
+                <div class="card-content">
+                    <h2 class="card-program-title">{{ program.title }}</h2>
+                    <h4 class="displayCategory">{{ program.category.name }}</h4>
+                    <img class="program-poster" src="{{ program.poster }}" alt="{{program.title}} poster">
+                    <p>{{ program.summary }}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+<a href="{{ path('program_index') }}">
+    Retour à la liste des programmes
+</a>
+
+{% endblock %}

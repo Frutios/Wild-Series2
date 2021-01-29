@@ -1,14 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Programs{% endblock %}
+{% block title %}All Programs{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1>Toutes les séries de la table program : </h1>
+    <div class="cardsContainer">
+    {% for program in programs %}
+            <div class="card">
+                <a href="{{ path("program_show", { id: program.id }) }}">
+                    <div class="card-content">
+                        <h2 class="card-program-title">{{ program.title }}</h2>
+                        <h4 class="displayCategory">{{ program.category.name }}</h4>
+                        <img class="program-poster" src="{{ program.poster }}" alt="{{program.title}} poster">
+                        <p>{{ program.summary }}</p>
+                    </div>
+                </a>
+            </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    </div>
 
-<div class="example-wrapper">
-    <h1>{{ website }}</h1>
-</div>
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
 {% endblock %}
