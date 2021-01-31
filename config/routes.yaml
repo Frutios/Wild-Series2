@@ -1,3 +1,9 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+show_by_season:
+    path: program/season/{id}
+    controller: App\Controller\ProgramController::showEpisodesBySeason
+    requirements:
+        id: \d+

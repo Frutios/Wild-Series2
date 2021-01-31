@@ -14,7 +14,7 @@
   </div>
 
   {% for season in seasons %}
-    <a class="category-link" href="/"> Season {{ season.number }}</a>
+    <a class="category-link" href="{{ path('show_by_season', { id: season.id }) }}"> Saison {{ season.number }}</a>
   {% endfor %}
 
   <a href="{{ path('program_index') }}">

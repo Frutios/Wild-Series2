@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -64,4 +65,33 @@ class ProgramController extends AbstractController
         ]);
     }
 
+    /**
+    * Affiche les episodes d'une saison
+    * @Route("/season/{id<^[0-9]+$>}", name="show_by_season", 
+    * methods={"GET"})
+    * @return Response
+    */
+
+    public function showEpisodesBySeason(int $id):Response
+    {
+        $season = $this->getDoctrine()
+        ->getRepository(Season::class)
+        ->findOneBy(['id' => $id]);
+
+        $episodes = $this->getDoctrine()
+        ->getRepository(Episode::class)
+        ->findBy(['season' => $season]);
+
+
+        if (!$episodes) {
+            throw $this->createNotFoundException(
+                'No episodes for this season'
+            );
+        }
+
+        return $this->render('season/show.html.twig',[
+            'season' => $season,
+            'episodes' => $episodes,
+        ]);
+    }
 }
